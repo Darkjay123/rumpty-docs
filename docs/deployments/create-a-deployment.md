@@ -38,7 +38,7 @@ The easiest setup is to make your app read `$PORT` and bind `0.0.0.0`; then the 
 
 ## Environment variables
 
-Add key/value pairs your app needs before the first deployment. Values are stored encrypted and treated as secrets, and they are injected at **runtime** only; they are deliberately kept out of the build so secret values can't leak into the built image. You can add more later from the deployment's **Env** tab.
+Add key/value pairs your app needs before the first deployment. Values are stored encrypted and treated as secrets, and they are available during the build and at runtime. You can add more later from the deployment's **Env** tab.
 
 ## Persistent storage (optional)
 
@@ -58,6 +58,20 @@ Pick a compute plan in the right panel:
 | **Pro** | ~$15/mo | 2 vCPU | 4 GB |
 
 Prices are shown in the console as an hourly rate with an approximate monthly equivalent. The **Free** plan includes 5 free deployments per account (up to 1 vCPU, 512 MB RAM, 50 GB transfer, and automatic scale-to-zero).
+
+## Runtime size
+
+The form's **Runtime size** panel decides the compute your app runs on: how much CPU and memory it gets, whether it sleeps when idle, and what it costs.
+
+| Size | Slug | vCPU | RAM | Transfer | Price |
+| --- | --- | --- | --- | --- | --- |
+| Free | `deploy-free` | Up to 1 | 512 MB | 50 GB | Free |
+| Tiny | `deploy-tiny` | Up to 1 | 512 MB | 50 GB | NGN 3.70/hr, up to NGN 2,699.28/mo |
+| Starter | `deploy-starter` | Up to 1.5 | 1 GB | 75 GB | NGN 7.40/hr, up to NGN 5,399.55/mo |
+
+Free apps use automatic scale-to-zero, and up to 5 free apps are included per account. Paid sizes bill hourly for the compute that runs, and their scale-to-zero is optional, so an always-on app pays the hourly rate around the clock while a sleeping one pays nothing.
+
+You can change a deployment's plan later from its **Settings** tab under **Compute plan**; the new plan is recorded and applies on the next deploy.
 
 ## Start a build
 

@@ -48,28 +48,17 @@ Volumes come with trade-offs (deploys briefly stop the app, single instance, siz
 
 ## Runtime size
 
-Pick a compute plan in the right panel:
-
-| Plan | Price | CPU | Memory |
-|------|-------|-----|--------|
-| **Tiny** | ~$2/mo | 0.25 vCPU | 512 MB |
-| **Starter** | ~$4/mo | 0.75 vCPU | 1 GB |
-| **Scale** | ~$8/mo | 1 vCPU | 2 GB |
-| **Pro** | ~$15/mo | 2 vCPU | 4 GB |
-
-Prices are shown in the console as an hourly rate with an approximate monthly equivalent. The **Free** plan includes 5 free deployments per account (up to 1 vCPU, 512 MB RAM, 50 GB transfer, and automatic scale-to-zero).
-
-## Runtime size
-
-The form's **Runtime size** panel decides the compute your app runs on: how much CPU and memory it gets, whether it sleeps when idle, and what it costs.
+Pick a compute plan in the right panel. Five sizes are offered:
 
 | Size | Slug | vCPU | RAM | Transfer | Price |
-| --- | --- | --- | --- | --- | --- |
-| Free | `deploy-free` | Up to 1 | 512 MB | 50 GB | Free |
-| Tiny | `deploy-tiny` | Up to 1 | 512 MB | 50 GB | NGN 3.70/hr, up to NGN 2,699.28/mo |
-| Starter | `deploy-starter` | Up to 1.5 | 1 GB | 75 GB | NGN 7.40/hr, up to NGN 5,399.55/mo |
+|------|------|------|-----|----------|-------|
+| **Free** | `deploy-free` | Up to 1 | 512 MB | 50 GB | Free |
+| **Tiny** | `deploy-tiny` | Up to 1 | 512 MB | 50 GB | NGN 3.70/hr, up to NGN 2,699.28/mo |
+| **Starter** | `deploy-starter` | Up to 1.5 | 1 GB | 75 GB | NGN 7.40/hr, up to NGN 5,399.55/mo |
+| **Scale** | `deploy-scale` | Up to 2 | 2 GB | 250 GB | NGN 14.79/hr, up to NGN 10,799.11/mo |
+| **Pro** | `deploy-pro` | Up to 3 | 4 GB | 500 GB | NGN 27.74/hr, up to NGN 20,249.07/mo |
 
-Free apps use automatic scale-to-zero, and up to 5 free apps are included per account. Paid sizes bill hourly for the compute that runs, and their scale-to-zero is optional, so an always-on app pays the hourly rate around the clock while a sleeping one pays nothing.
+Paid sizes bill hourly for the compute that runs, with the monthly figure as an always-on ceiling. Free apps always sleep when idle (scale-to-zero is forced on Free, with a ~8 second cold start on the first request after a sleep), and up to 5 free apps are included per account. On paid sizes scale-to-zero is optional: under **Autoscaling** you can keep the app always on, tune **Sleep after idle (minutes)**, and set **Min/Max instances** to scale out under load (each running instance is billed at the plan rate).
 
 You can change a deployment's plan later from its **Settings** tab under **Compute plan**; the new plan is recorded and applies on the next deploy.
 

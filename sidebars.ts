@@ -50,6 +50,13 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: 'category',
+          label: 'One-Click Apps',
+          items: [
+            'one-click-apps/introduction',
+          ],
+        },
+        {
+          type: 'category',
           label: 'Kubernetes',
           items: [
             'kubernetes/introduction',
